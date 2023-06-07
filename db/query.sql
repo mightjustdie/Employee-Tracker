@@ -1,19 +1,12 @@
-const db = require("./connections");
+-- SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name
+-- AS department, role.salary, manager.first_name, manager.last_name 
+-- AS manager
+-- FROM employee
+-- JOIN role ON employee.role_id = role.id
+-- JOIN department ON role.department_id = department.id
+-- LEFT JOIN employee manager ON employee.manager_id = manager.id;
 
-const queryEngine = async (str) => {
-  const data = await new Promise((resolve, reject) => {
-    db.query(str, (err, results) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(results);
-      }
-    });
-  });
 
-  console.log("\n");
-  console.table(data);
-  return data;
-};
 
-module.exports = queryEngine;
+UPDATE employee SET role_id = 10
+WHERE employee.id = 1;
